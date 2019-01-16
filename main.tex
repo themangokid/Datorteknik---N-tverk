@@ -1,0 +1,135 @@
+\documentclass[fleqn]{article}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{mathexam}
+%\usepackage{svg}
+\usepackage{amsmath}
+\usepackage{biblatex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\ExamClass{Datorteknik}
+\ExamName{Datorteknik nätverksdelen [EJ KLAR]}
+\ExamHead{\today}
+
+\let\ds\displaystyle
+
+\begin{document}
+
+\section{Introduktion}
+Läs långsamt och försök kom ihåg vad som sades under lektionstiden, framför allt om det var ett exempel som vi hade. Till exempel Alströmers internet eller ditt hemma. Notera också att alla gånger vi pratar om 'IP-adress' skriver vi det som bara 'adress'.
+\begin{verbatim}
+    adress = IP-adress
+\end{verbatim}
+\section{IP-adresser}
+Varför behövs adresser?
+Om vi vill koppla samman datorer måste vi ha ett sätt att komma åt en specifik dator. Tänk att vi vill LAN:a, då måste alla gå in på samma dator, kallad servern. 
+Exempel: Vi ska spela Soldat. Servern ligger på 192.168.1.5:2573
+Alla skriver in den adressen och spelets default port.
+För att om datorer på ett nätverk får samma 
+IP-adress får vi en "IP konflikt".
+\begin{verbatim}
+    Den generalla sättet att skriva en IP-Adress är xxx.xxx.xxx.xxx där x = {0...255}
+\end{verbatim}
+
+För att vara tydlig, x kan vara mellan 0 till 255. Vilket är 256 stycken, vi börjar helt enkelt räkna från 0. Alla adresser är unika för nätverket, det vill säga det finns inte flera adresser till en och samma dator.
+
+\subsection{IP-adresser fort}
+Statiska IP-adresser
+"Om du känner behov av att alltid veta vad din IP-adress är då du behöver en statisk IP adress, eftersom den är konstant. Statisk IP-adresser är bra om du vill använda datorn som en server då servrar fungerar bättre med just statiska IP-adresser."
+
+
+IP-adress
+IP-adresser används för att identifiera enheter på ett nätverk. Det är en rad siffror som representerar en enhet på nätverket.
+
+
+
+
+Exempel på \textbf{LAN} adresser:
+\begin{itemize}
+	\item 10.0.0.0 to 10.255.255.255
+	\item 172.16.0.0 to 172.31.255.255
+	\item 192.168.0.0 to 192.168.255.255
+\end{itemize}
+
+
+Exempel på publika adresser:
+\begin{itemize}
+	\item 86.207.9.10
+	\item 193.235.138.34
+	\item 246.142.77.208
+\end{itemize}
+
+\subsection{NAT \& ISP}
+NAT = Network address translation. ISP = Internet service provider (banhof). En NAT översätter din lokala IP-Adress så du får en publik.
+
+%\img{}
+
+\section{Olika slags lokala IP-adresser}
+\begin{description}
+	\item 192.168.1.0 --- Adressen till själva nätverket
+	\item 192.168.1.1 --- Routerns adress
+	\item 192.168.1.2 --- En dators adress
+	\item 192.168.1.3 --- En dators adress
+	\item 192.168.1.4 --- En dators adress
+	\item 192.168.1.5 --- En dators adress
+	\item 192.168.1.6 --- En dators adress
+	\item 192.168.1.7 --- En dators adress
+	\item ...
+	\item 192.168.1.255 --- Broadcast adress. Används av ARP
+\end{description}
+
+\section{OSI}
+\begin{description}
+			
+	\item 7.) Application Layer. Dator spel, Chrome, FTP-program
+		      	      
+	\item 6.) Presentation Layer. Krypterar data.
+		      	      
+	\item 5.) Session Layer. SSH (Styr en annan dator med terminalen)
+		      	      
+	\item 4.) Transport Layer. TCP och UDP
+		      	      
+	\item 3.) Network layer. IP / IPv6
+		      	      
+	\item 2.) Data link layer. Etherenet, LAN och ARP.
+		      	      
+	\item 1.) Physical Layer. Fiber optiska kablar.
+\end{description}
+
+\subsection{ARP}
+ARP ser till att alla datorer får reda på vart alla andra datorer finns på nätverket. 'ARP broadcast' som görs med IP:n 192.168.1.255 är ett bra exempel på vad ARP gör. Den tar också reda på 'hardware address', själva nummret som din dator fick i fabriken. ARP kör endast på LAN.
+
+\begin{verbatim}
+    ARP: Address Resolution Protocol
+    Google translate: Adressupplösningsprotokoll
+\end{verbatim}
+
+\subsection{UDP}
+UDP används till saker som kräver att det går fort och där hastighet går före korrekthet. När man använder UDP är det upp till programmeraren att koda alla olika fall på rätt sätt. När ett UDP packet är skickat vet man inte vad som kommer att komma fram eller om det kommer fram överhuvudtaget. Det ni behöver kunna till provet är: UDP är hit or miss.
+
+Från wikipedia:
+
+Med förbindelselöst (en. stateless eller connectionless) menas att ingen session upprättas mellan sändare och mottagare av protokollet i sig. Härvid kan inte sändare (på UDP-nivå) garantera att mottagaren får paketet. Jämför med TCP som är ett förbindelseorienterat (en. stateful eller connection oriented) protokoll. Helt enkelt behöver TCP "skaka hand" medans UDP inte behöver det. 
+
+\subsection{Förkortningar}
+\begin{description}
+	\item LAN = Local area network
+	\item TCP = Transport control protocol
+	\item IP = Internet Protocol
+	\item UDP = User datagram protocol
+	\item FTP = File transport protocol
+\end{description}
+
+\subsection{Statisk vs Dynamisk IP}
+Skillnaden mellan statiskt och dynamisk är (på LAN) att man med dynamisk kan tilldela datorer en IP-adress utan att det blir IP konflikter.
+
+
+
+
+
+\end{thebibliography}
+\end{document}
